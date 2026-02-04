@@ -1,0 +1,7 @@
+{
+  "name": "大学寒假学习打卡系统",
+  "description": "一个专为大学生设计的寒假学习记录与积分打卡平台，支持图文发布、自动积分计算及学习进度追踪。",
+  "requestFramePermissions": [
+    "camera"
+  ]
+}
