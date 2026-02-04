@@ -2,16 +2,9 @@
 import { GoogleGenAI } from "@google/genai";
 
 export const getStudyEncouragement = async (content: string, hours: number) => {
-  // 优先从环境变量读取，如果是在 Vite 环境下，通常是 import.meta.env.VITE_API_KEY
-  // 这里遵循系统指令，直接使用 process.env.API_KEY
-  const apiKey = process.env.API_KEY;
-
-  if (!apiKey) {
-    console.warn("未检测到 API_KEY，AI 功能将使用演示模式");
-    return "太棒了！继续保持这个学习节奏。";
-  }
-
-  const ai = new GoogleGenAI({ apiKey: apiKey });
+  // Fix: Direct initialization using process.env.API_KEY as per instructions.
+  // Assumes API_KEY is pre-configured in the environment.
+  const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
   
   try {
     const response = await ai.models.generateContent({
@@ -22,6 +15,7 @@ export const getStudyEncouragement = async (content: string, hours: number) => {
         temperature: 0.7,
       },
     });
+    // Fix: Using the .text property directly as per @google/genai guidelines
     return response.text || "加油！每一份努力都会在春天开花结果。";
   } catch (error) {
     console.error("Gemini API 错误:", error);

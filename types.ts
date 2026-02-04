@@ -1,6 +1,16 @@
 
+export interface UserProfile {
+  name: string;
+  school: string;
+  grade: string;
+  avatar: string;
+}
+
 export interface CheckInRecord {
   id: string;
+  userId: string;
+  userName: string;
+  userAvatar: string;
   date: string; // ISO format
   content: string;
   images: string[];
